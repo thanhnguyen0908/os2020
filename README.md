@@ -8,7 +8,6 @@ Students are expected to:
 
 Student Info
 =========================
-
 * Student Name: Nguyen Chi Thanh
 * Student ID: Bi9-211
 
