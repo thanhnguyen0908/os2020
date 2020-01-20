@@ -1,0 +1,18 @@
+thanh0908@ubuntu:~$ ls| grep README
+README.md
+thanh0908@ubuntu:~$ wc -l /etc/passwd
+41 /etc/passwd
+thanh0908@ubuntu:~$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:           1966        1415         127           2         423         397
+Swap:           947          33         913
+thanh0908@ubuntu:~$ free -m | grep Mem | awk 
+thanh0908@ubuntu:~$ free -m | grep Mem | awk '{print$2}'
+1966
+thanh0908@ubuntu:~$ cd /proc
+thanh0908@ubuntu:/proc$ cat cpuinfo | grep core
+core id		: 0
+cpu cores	: 1
+thanh0908@ubuntu:~$ find ~/Pictures/*.png | wc -l
+0
+

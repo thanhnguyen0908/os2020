@@ -1,0 +1,29 @@
+thanh0908@ubuntu:~$ ps -A | tail -10
+  2107 tty2     00:00:00 update-notifier
+  2194 tty2     00:00:00 deja-dup-monito
+  2985 ?        00:00:00 kworker/0:0-eve
+  3175 ?        00:00:00 gvfsd-metadata
+  3393 ?        00:00:00 kworker/u256:0-
+  3660 ?        00:00:01 gnome-terminal-
+  3746 pts/0    00:00:00 bash
+  3770 ?        00:00:00 kworker/u256:1
+  3773 pts/0    00:00:00 ps
+  3774 pts/0    00:00:00 tail
+thanh0908@ubuntu:~$ gnome-text-editor
+thanh0908@ubuntu:~$ ps -A | grep firefox
+  3951 tty2     00:00:11 firefox
+thanh0908@ubuntu:~$ cat /proc/3951/status | tail -10
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Speculation_Store_Bypass:	thread vulnerable
+Cpus_allowed:	ffffffff,ffffffff,ffffffff,ffffffff
+Cpus_allowed_list:	0-127
+Mems_allowed:	00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	4161
+nonvoluntary_ctxt_switches:	23065
+thanh0908@ubuntu:~$ kill -STOP 3951
+thanh0908@ubuntu:~$ kill -PAUSE 3951
+bash: kill: PAUSE: invalid signal specification
+thanh0908@ubuntu:~$ kill -KILL 3951
