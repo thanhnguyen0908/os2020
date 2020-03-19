@@ -1,0 +1,8 @@
+thanh0908@ubuntu:~$ ps -A | grep firefox
+ 31843 tty2     00:00:14 firefox
+thanh0908@ubuntu:~$ ps -o nlwp 31843
+NLWP
+  51
+thanh0908@ubuntu:~$ cd /proc/31843/task
+thanh0908@ubuntu:/proc/31843/task$ ls | wc -l
+48
