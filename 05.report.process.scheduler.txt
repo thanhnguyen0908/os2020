@@ -1,0 +1,47 @@
+1st execution:
+thanh0908@ubuntu:~$ awk '{print}' /proc/sched_debug | grep "switches"
+  .nr_switches                   : 2569726
+ S           task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
+thanh0908@ubuntu:~$ awk '{print}' /proc/sched_debug | grep "systemd" | awk '{s+=$5}END{print s}'
+124263
+2nd execution:
+thanh0908@ubuntu:~$ ps -A | grep systemd
+     1 ?        00:00:15 systemd
+   672 ?        00:00:01 systemd-logind
+   784 ?        00:00:00 systemd
+  1317 ?        00:00:00 systemd
+  3176 ?        00:00:00 systemd-resolve
+  3181 ?        00:00:00 systemd-timesyn
+  3185 ?        00:00:00 systemd-journal
+  7426 ?        00:00:00 systemd-udevd
+thanh0908@ubuntu:~$ ps -A | grep systemd | awk '{print $1}' >data.txt
+thanh0908@ubuntu:~$ while read i
+> do awk '{print}' /proc/$i/sched | grep switches;
+> done <./data.txt
+nr_switches                                  :                90921
+nr_voluntary_switches                        :                 9729
+nr_involuntary_switches                      :                81192
+nr_switches                                  :                33130
+nr_voluntary_switches                        :                32975
+nr_involuntary_switches                      :                  155
+nr_switches                                  :                  265
+nr_voluntary_switches                        :                  184
+nr_involuntary_switches                      :                   81
+nr_switches                                  :                  822
+nr_voluntary_switches                        :                  511
+nr_involuntary_switches                      :                  311
+nr_switches                                  :                   96
+nr_voluntary_switches                        :                   59
+nr_involuntary_switches                      :                   37
+nr_switches                                  :                   72
+nr_voluntary_switches                        :                   31
+nr_involuntary_switches                      :                   41
+nr_switches                                  :                 1893
+nr_voluntary_switches                        :                 1300
+nr_involuntary_switches                      :                  593
+nr_switches                                  :                  640
+nr_voluntary_switches                        :                  538
+nr_involuntary_switches                      :                  102
+thanh0908@ubuntu:~$ while read i; do awk '{print}' /proc/$i/sched | grep switches | awk '{print $3}'; done <./data.txt >newdata.txt
+thanh0908@ubuntu:~$ while read i; do awk '{s+=$i}END{print s}'; done <./newdata.txt
+165936
